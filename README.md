@@ -25,11 +25,11 @@ The repository supports creating dashboards, generating reports, and conducting 
   - Contains output plots used in reports. 
 
 - **`src/` key functions include:**
-  - load_pollution_datasets.R (loads specified variables of interest with timestamp and monitor)
-  - process_multiple_pollutants.R (uses merge_sd_data.R and summarize_pollution_times.R to create merged data for the measurement of interest and summarizes the resulting data by hour and day)
-  - merge_sd_data.R (merges the sd card data to the cloud data for times when the cloud data is missing)
-  - summarize_pollution_times.R (summarizes monitor and fleet averages for hourly/daily periods)
-  - compare_fleet_regression.R (calculates regression of monitor reading compared to fleet average — used for applying correction to colocated data)
+  - **load_pollution_datasets.R** (loads specified variables of interest with timestamp and monitor)
+  - **process_multiple_pollutants.R** (uses merge_sd_data.R and summarize_pollution_times.R to create merged data for the measurement of interest and summarizes the resulting data by hour and day)
+  - **merge_sd_data.R** (merges the sd card data to the cloud data for times when the cloud data is missing)
+  - **summarize_pollution_times.R** (summarizes monitor and fleet averages for hourly/daily periods)
+  - **compare_fleet_regression.R** (calculates regression of monitor reading compared to fleet average — used for applying correction to colocated data)
   - Other functions primarily focus on specific analysis and the creation of plots 
     
 
@@ -37,17 +37,21 @@ The repository supports creating dashboards, generating reports, and conducting 
 ### Data Preparation
 
 - **`load_ghana_AQ_data.Rmd`**
-  - Modular script for loading data from QuantAQ monitors.
-  - Specify start date of interest, end data of interest, and serial ID numbers for the monitors to obtain data for each monitor in the input time range.
+  - Modular markdown file for loading data from QuantAQ monitors.
+  - The markdown file walks through the process of connecting to the QuantAQ API to load minute-level air quality data for a set of QuantAQ Modulair devices over a specified date range.
+  - Data from SD cards is also loaded and processed, combining MOD and MOD-PM device files into a single dataset.
+  - Both sources are processed for consistency in timestamps and monitoring variables.
  
 - **`cloud_vs_sd_completeness.R`**
-  - Compares data completeness between cloud and SD card sources.
+  - Processes and merges timestamped data from SD cards and cloud sources, assessing data availability per monitor across hourly, daily, and weekly intervals. 
+  - A comprehensive summary table is generated, providing key metrics such as total hours/days of data represented, earliest and latest timestamps, and percentages of missing and available data for SD, cloud, and combined sources
 
 - **`gas_pm_completeness.Rmd`**
-  - Script to compare the completeness of gas and PM data for MOD units. 
+  - Integrates air quality data from multiple sources (PM and gas sensors) for MOD devices, processes it to ensure consistency across timestamps, and calculates pollutant data availability (e.g., PM1, PM25, CO, NO, NO2, O3) over time at weekly and monthly intervals.
+  - Plots availibility for each monitor and each pollutant. 
 
 - **`temp_humidity_data_prep.Rmd`**
-  - Prepares temperature and humidity data for analysis.
+  - Prepares temperature and relative humidity data (also obtained through QuantAQ modulair devices) for analysis.
 
 ### Reports and Dashboards
 - **`ghana_AQ_analysis.Rmd`**
