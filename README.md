@@ -14,6 +14,7 @@ The repository supports creating dashboards, generating reports, and conducting 
 ### Folders
 - **`air_pollution_dashboard/`**
   - Contains scripts and resources for building the air pollution dashboard.
+  - App deployed here: https://cumc-columbia-air-pollution-dashboard.shinyapps.io/cumc-air-pollution-dashboard/ (takes a minute to load)
 
 - **`archive_functions/`**
   - Archived scripts and functions for reference.
