@@ -46,24 +46,16 @@ The repository supports creating dashboards, generating reports, and conducting 
   - Processes and merges timestamped data from SD cards and cloud sources, assessing data availability per monitor across hourly, daily, and weekly intervals. 
   - A comprehensive summary table is generated, providing key metrics such as total hours/days of data represented, earliest and latest timestamps, and percentages of missing and available data for SD, cloud, and combined sources
 
-- **`gas_pm_completeness.Rmd`**
-  - Integrates air quality data from multiple sources (PM and gas sensors) for MOD devices, processes it to ensure consistency across timestamps, and calculates pollutant data availability (e.g., PM1, PM25, CO, NO, NO2, O3) over time at weekly and monthly intervals.
-  - Plots availibility for each monitor and each pollutant. 
-
-- **`temp_humidity_data_prep.Rmd`**
-  - Prepares temperature and relative humidity data (also obtained through QuantAQ modulair devices) for analysis.
-
 ### Reports and Dashboards
 - **`ghana_AQ_analysis.Rmd`**
-  - Analysis report focusing on Ghana's air quality data.
+  - Initial version of AQ analysis markdown. **ghana_pollution_report.Rmd** contains code to create more tailored plots for a report. 
+  - Includes PM1, PM2.5, PM10, CO, NO, NO2, and O3 pollution data from both colocation and community deployments across Ghana.
+  - Maps monitor locations.
+  - Grand averages analyzed across all monitors for daily and cooking-period data. Trends visualized through heatmaps, boxplots, and line graphs. 
+  - Includes spatial analysis of pollution for the monitor locations, looking at factors such as proximity to road. 
 
 - **`ghana_pollution_report.Rmd`**
-  - Detailed report on Ghana pollution trends.
+  - Uses the same setup as ghana_AQ_analysis.Rmd, but offers more customization of plots that were used for a report on Ghana pollution trends.
 
 - **`ghana_pollution_report_clean.Rmd`**
-  - Updated to load corrected data from CSV/RDS files.
- 
-
-
-
-The missing_data_report R Markdown contains code that allows you to obtain data by specifing a list of monitors, a start date, and an end date. With this data, I create a table that specifies the number of hours of missing data for each date/monitor pairing. 
+  - In progress updates to ghana_pollution_report.Rmd to keep only the necessary code and simplify as much as possible. 
